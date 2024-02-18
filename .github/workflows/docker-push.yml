@@ -31,8 +31,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            khulnasoft/latest-changes:latest
-            ghcr.io/khulnasoft/latest-changes:latest
+            khulnasoft/latest-changes-action:latest
+            ghcr.io/khulnasoft/latest-changes-action:latest
       - name: Build and push tag
         if: github.event_name == 'release'
         uses: docker/build-push-action@v5

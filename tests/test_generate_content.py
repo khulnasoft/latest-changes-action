@@ -3,7 +3,7 @@ from typing import Any, cast
 
 import pytest
 
-from latest_changes_action_action.main import (
+from latest_changes_action.main import (
     Settings,
     TemplateDataPR,
     TemplateDataUser,
