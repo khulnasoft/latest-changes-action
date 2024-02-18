@@ -1,4 +1,4 @@
-# Latest Changes
+# Latest Changes Action
 
 Automatically add the changes from each PR to the release notes in a file.
 
@@ -9,7 +9,7 @@ Install this GitHub action by creating a file in your repo at `.github/workflows
 A minimal example could be:
 
 ```YAML
-name: Latest Changes
+name: Latest Changes Action
 
 on:
   pull_request_target:
@@ -52,7 +52,7 @@ After merging a PR to the main branch, it will:
 * Inside of that file, find a "header" with the text:
 
 ```Markdown
-### Latest Changes
+### Latest Changes Action
 ```
 
 * Right after that, it will add a new list item with the changes:
@@ -63,9 +63,9 @@ After merging a PR to the main branch, it will:
 
 It will look something like:
 
-> ### Latest Changes
+> ### Latest Changes Action
 >
-> * ✨ Add support for Jinja2 templates for Latest Changes Actionmessages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
+> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
 
 You can see an example of how it works in this same file, at the bottom, in [Latest Changes Action- Latest Changes Action🤷](##latest-changes---latest-changes-).
 
@@ -91,11 +91,11 @@ By default, it will use these labels and headers:
 
 So, if you have a PR with a label `feature`, by default, it will show up in the section about features, like:
 
-> ### Latest Changes
+> ### Latest Changes Action
 >
 > #### Features
 >
-> * ✨ Add support for Jinja2 templates for Latest Changes Actionmessages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
+> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
 
 You can configure the labels and headers used in the GitHub Action `labels` workflow configuration, and you can configure the header prefix, by default `#### `.
 
@@ -109,7 +109,7 @@ Nevertheless, if you have some PRs that were open before adding this GitHub Acti
 
 You can "dispatch" a workflow/run from the "Actions" tab:
 
-* Select this GitHub Action with the name you used, e.g. "Latest Changes".
+* Select this GitHub Action with the name you used, e.g. "Latest Changes Action".
 * Click on "Run Workflow".
 * It will ask you for the PR number and do all the rest.
 
@@ -119,10 +119,10 @@ So, in those cases, it won't do everything automatically, you will have to manua
 
 You can configure:
 
-* `latest_changes_action_file`: The file to modify with the latest changes. For example: `./docs/latest-changes-action.rst`.
+* `latest_changes_action_file`: The file to modify with the latest changes Action. For example: `./docs/latest-changes-action.rst`.
 * `latest_changes_action_header`: The header to look for before adding a new message. for example: `# CHANGELOG`.
 * `template_file`: A custom Jinja2 template file to use to generate the message, you could use this to generate a different message or to use a different format, for example, HTML instead of the default Markdown.
-* `end_regex`: A RegEx string that marks the end of this release, so it normally matches the start of the header of the next release section, normally the same header level as `latest_changes_action_header`, so, if the `latest_changes_action_header` is `### Latest Changes`, the content for the next release below is probably something like `### 0.2.0`, then the `end_regex` should be `^### `. This is used to limit the content updated as this will read the existing sub sections and possibly update them using the labels configuration and the labels in the PR. By default it is `(^### .*)|(^## .*)` to detect a possible next header, e.g. for the license.
+* `end_regex`: A RegEx string that marks the end of this release, so it normally matches the start of the header of the next release section, normally the same header level as `latest_changes_action_header`, so, if the `latest_changes_action_header` is `### Latest Changes Action`, the content for the next release below is probably something like `### 0.2.0`, then the `end_regex` should be `^### `. This is used to limit the content updated as this will read the existing sub sections and possibly update them using the labels configuration and the labels in the PR. By default it is `(^### .*)|(^## .*)` to detect a possible next header, e.g. for the license.
 * `debug_logs`: Set to `'true'` to show logs with the current settings.
 * `labels`: A JSON array of JSON objects with a `label` that you would put in each PR and the `header` that would be used in the release notes. See the example below.
 * `label_header_prefix`: A prefix to put before each label's header. This is also used to detect where the next label header starts. By default it is `#### `, so the headers will look like `#### Features`.
@@ -154,7 +154,7 @@ This changed: {{pr.title}}. Done by [the GitHub user {{pr.user.login}}]({{pr.use
 Then you could have a workflow like:
 
 ```YAML
-name: Latest Changes
+name: Latest Changes Action
 
 on:
   pull_request_target:
@@ -253,7 +253,7 @@ And that Markdown will be shown like:
 
 ## Protected Branches
 
-If you have a protected branch (for example `main` or `master`), this action wouldn't be able to write and push the updated Latest Changes Actionto it.
+If you have a protected branch (for example `main` or `master`), this action wouldn't be able to write and push the updated Latest Changes Action to it.
 
 But it's easy to fix if you are an admin in the repo and can push directly to the protected branch.
 
@@ -274,7 +274,7 @@ Then in your configuration, pass that token to the action `actions/checkout@v4`:
 The complete example would look like:
 
 ```YAML
-name: Latest Changes
+name: Latest Changes Action
 
 on:
   pull_request_target:
@@ -393,7 +393,7 @@ So, the commits will still be shown as made by `github-actions`.
 
 ### 0.0.2
 
-* ✨ Check if the Latest Changes Actionmessage was already added before adding it. PR [#35](https://github.com/khulnasoft/latest-changes-action/pull/35) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Check if the Latest Changes Action message was already added before adding it. PR [#35](https://github.com/khulnasoft/latest-changes-action/pull/35) by [@khulnasoft](https://github.com/khulnasoft).
 * 📝 Add docs for running manually, with a workflow dispatch. PR [#34](https://github.com/khulnasoft/latest-changes-action/pull/34) by [@khulnasoft](https://github.com/khulnasoft).
 * ✨ Refactor and add support for triggering with workflow dispatch events. PR [#32](https://github.com/khulnasoft/latest-changes-action/pull/32) by [@khulnasoft](https://github.com/khulnasoft).
 * 🐛 Fix basic example in README, include checkout step. PR [#31](https://github.com/khulnasoft/latest-changes-action/pull/31) by [@khulnasoft](https://github.com/khulnasoft).
