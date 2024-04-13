@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: docker://khulnasoft/latest-changes-action:0.2.1
+      - uses: docker://khulnasoft/latest-changes-action:0.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -39,9 +39,9 @@ jobs:
 **Note**: you can also use the GitHub action directly instead of with Docker, but that would take an extra minute:
 
 ```YAML
-      # - uses: docker://khulnasoft/latest-changes-action:0.2.1
+      # - uses: docker://khulnasoft/latest-changes-action:0.3.0
       # This is slower but also works
-      - uses: khulnasoft/latest-changes-action@0.2.1
+      - uses: khulnasoft/latest-changes-action@0.3.0
 ```
 
 In this minimal example, it uses all the default configurations.
@@ -173,7 +173,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: khulnasoft/latest-changes-action@0.2.1
+    - uses: khulnasoft/latest-changes-action@0.3.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         latest_changes_action_file: docs/release-notes.md
@@ -209,13 +209,13 @@ In this custom config:
 * It uses the GitHub action directly:
 
 ```
-khulnasoft/latest-changes-action@0.2.1
+khulnasoft/latest-changes-action@0.3.0
 ```
 
 instead of with Docker:
 
 ```
-docker://khulnasoft/latest-changes-action:0.2.1
+docker://khulnasoft/latest-changes-action:0.3.0
 ```
 
 **Note**: that would make every run about 1 min slower, but you can do that if you prefer it 🤷.
@@ -298,7 +298,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTIONS_TOKEN }}
-      - uses: docker://khulnasoft/latest-changes-action:0.2.1
+      - uses: docker://khulnasoft/latest-changes-action:0.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
