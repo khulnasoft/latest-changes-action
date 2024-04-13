@@ -322,6 +322,7 @@ So, the commits will still be shown as made by `github-actions`.
 
 ### Latest Changes Action- Latest Changes Action🤷
 
+* init commit. PR [#6](https://github.com/khulnasoft/latest-changes-action/pull/6) by [@gitworkflows](https://github.com/gitworkflows).
 * ⬆ Update httpx requirement from <0.26.0,>=0.15.5 to >=0.15.5,<0.28.0. PR [#5](https://github.com/khulnasoft/latest-changes-action/pull/5) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ### 0.3.0
