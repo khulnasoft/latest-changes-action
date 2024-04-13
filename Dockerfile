@@ -9,8 +9,8 @@ COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install -r /app/requirements.txt
 
-COPY ./latest_changes_action /app/latest_changes_action
+COPY ./latest_changes /app/latest_changes
 
 ENV PYTHONPATH=/app
 
-CMD ["python", "-m", "latest_changes_action"]
+CMD ["python", "-m", "latest_changes"]

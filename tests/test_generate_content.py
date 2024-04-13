@@ -3,7 +3,7 @@ from typing import Any, cast
 
 import pytest
 
-from latest_changes_action.main import (
+from latest_changes.main import (
     Settings,
     TemplateDataPR,
     TemplateDataUser,
@@ -17,19 +17,19 @@ def test_no_sections():
 
     ### Latest Changes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
-    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -49,14 +49,14 @@ def test_no_sections():
     ### Latest Changes
 
     * Demo PR. PR [#42](https://example.com/pr/42) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
-    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -71,13 +71,13 @@ def test_before_release():
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -100,8 +100,8 @@ def test_before_release():
 
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -116,17 +116,17 @@ def test_existing_labels_no_label():
 
     #### Features
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -149,12 +149,12 @@ def test_existing_labels_no_label():
 
     #### Features
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -169,17 +169,17 @@ def test_existing_labels_same_label():
 
     #### Features
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -203,12 +203,12 @@ def test_existing_labels_same_label():
     #### Features
 
     * Demo PR. PR [#42](https://example.com/pr/42) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -223,17 +223,17 @@ def test_existing_label_other_label():
 
     #### Fixes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -260,12 +260,12 @@ def test_existing_label_other_label():
 
     #### Fixes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -280,17 +280,17 @@ def test_existing_label_secondary_label():
 
     #### Features
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -313,7 +313,7 @@ def test_existing_label_secondary_label():
 
     #### Features
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Fixes
 
@@ -321,8 +321,8 @@ def test_existing_label_secondary_label():
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -335,17 +335,17 @@ def test_no_existing_label_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -366,7 +366,7 @@ def test_no_existing_label_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Features
 
@@ -374,8 +374,8 @@ def test_no_existing_label_label():
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -388,19 +388,19 @@ def test_no_existing_label_release_label_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
     #### Features
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -421,7 +421,7 @@ def test_no_existing_label_release_label_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Features
 
@@ -431,8 +431,8 @@ def test_no_existing_label_release_label_label():
 
     #### Features
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -447,17 +447,17 @@ def test_custom_label_label():
 
     #### Custom
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -480,7 +480,7 @@ def test_custom_label_label():
 
     #### Custom
     
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Features
 
@@ -488,8 +488,8 @@ def test_custom_label_label():
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -502,21 +502,21 @@ def test_sectionless_content_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Fixes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -537,7 +537,7 @@ def test_sectionless_content_label():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Features
 
@@ -545,19 +545,19 @@ def test_sectionless_content_label():
 
     #### Fixes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
     )
 
 
-def test_content_above_latest_changes_action():
+def test_content_above_latest_changes():
     raw_content = """
     ## Release Notes
 
@@ -573,21 +573,21 @@ def test_content_above_latest_changes_action():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Fixes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -618,7 +618,7 @@ def test_content_above_latest_changes_action():
 
     ### Latest Changes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Features
 
@@ -626,12 +626,12 @@ def test_content_above_latest_changes_action():
 
     #### Fixes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
@@ -646,17 +646,17 @@ def test_multiple_labels():
 
     #### Fixes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -683,19 +683,19 @@ def test_multiple_labels():
 
     #### Fixes
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
         )
         + "\n"
     )
 
 
-def test_no_latest_changes_action_raises():
+def test_no_latest_changes_raises():
     raw_content = """
     ## Release Notes
 
@@ -709,21 +709,21 @@ def test_no_latest_changes_action_raises():
 
     These are not release notes.
 
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
     #### Fixes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -744,19 +744,19 @@ def test_changes_exist_raises():
     ### Latest Changes
 
     * Demo PR. PR [#42](https://example.com/pr/42) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
-    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
     
     ### 0.0.3
 
-    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚚 Update Python module name. PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🐛 Fix default Jinja2 path. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
     """
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -822,10 +822,10 @@ def test_multiple_header_sections():
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
-        input_latest_changes_action_header="## Latest Changes",
+        input_latest_changes_header="## Latest Changes",
         input_end_regex="^## ",
         input_labels=cast(
             Any,
@@ -960,10 +960,10 @@ def test_multiple_header_sections_label():
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
-        input_latest_changes_action_header="## Latest Changes",
+        input_latest_changes_header="## Latest Changes",
         input_end_regex="^## ",
         input_labels=cast(
             Any,
@@ -1060,7 +1060,7 @@ def test_first_change_with_extra_header():
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -1100,15 +1100,15 @@ def test_first_release_existing_content_with_extra_header():
 
     ### Latest Changes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     #### Features
     
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     #### Docs
     
-    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
 
     ## License
 
@@ -1117,7 +1117,7 @@ def test_first_release_existing_content_with_extra_header():
 
     content = inspect.cleandoc(raw_content)
     settings = Settings(
-        github_repository="khulnasoft/latest-changes-action",
+        github_repository="khulnasoft/latest-changes",
         github_event_path="event.json",
         input_token="secret",
     )
@@ -1138,16 +1138,16 @@ def test_first_release_existing_content_with_extra_header():
 
     ### Latest Changes
 
-    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🔥 Remove config. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
     
     #### Features
     
     * Demo PR. PR [#42](https://example.com/pr/42) by [@khulnasoft](https://github.com/khulnasoft).
-    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+    * 🚀 Publish amd64 and arm64 versions. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
     
     #### Docs
     
-    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+    * 📝 Add docs. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
 
     ## License
 

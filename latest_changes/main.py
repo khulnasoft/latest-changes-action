@@ -22,9 +22,9 @@ class Settings(BaseSettings):
     github_event_path: Path
     github_event_name: Optional[str] = None
     input_token: SecretStr
-    input_latest_changes_action_file: Path = Path("README.md")
-    input_latest_changes_action_header: str = "### Latest Changes"
-    input_template_file: Path = Path(__file__).parent / "latest-changes-action.jinja2"
+    input_latest_changes_file: Path = Path("README.md")
+    input_latest_changes_header: str = "### Latest Changes"
+    input_template_file: Path = Path(__file__).parent / "latest-changes.jinja2"
     input_end_regex: str = "(^### .*)|(^## .*)"
     input_debug_logs: Optional[bool] = False
     input_labels: List[Section] = [
@@ -80,11 +80,11 @@ def generate_content(
     labels: list[str],
 ) -> str:
     header_match = re.search(
-        settings.input_latest_changes_action_header, content, flags=re.MULTILINE
+        settings.input_latest_changes_header, content, flags=re.MULTILINE
     )
     if not header_match:
         raise RuntimeError(
-            f"The Latest Changes Actionfile at: {settings.input_latest_changes_action_file} doesn't seem to contain the header RegEx: {settings.input_latest_changes_action_header}"
+            f"The Latest Changes Actionfile at: {settings.input_latest_changes_file} doesn't seem to contain the header RegEx: {settings.input_latest_changes_header}"
         )
     template_content = settings.input_template_file.read_text("utf-8")
     template = Template(template_content)
@@ -214,9 +214,9 @@ def main() -> None:
     if not pr.merged:
         logging.info("The PR was not merged, nothing else to do.")
         sys.exit(0)
-    if not settings.input_latest_changes_action_file.is_file():
+    if not settings.input_latest_changes_file.is_file():
         logging.error(
-            f"The Latest Changes Actionfiles doesn't seem to exist: {settings.input_latest_changes_action_file}"
+            f"The Latest Changes Actionfiles doesn't seem to exist: {settings.input_latest_changes_file}"
         )
         sys.exit(1)
     logging.info("Setting up GitHub Actions git user")
@@ -232,7 +232,7 @@ def main() -> None:
             "Pulling the latest changes, including the latest merged PR (this one)"
         )
         subprocess.run(["git", "pull"], check=True)
-        content = settings.input_latest_changes_action_file.read_text()
+        content = settings.input_latest_changes_file.read_text()
 
         new_content = generate_content(
             content=content,
@@ -240,11 +240,11 @@ def main() -> None:
             pr=pr,
             labels=[label.name for label in pr.labels],
         )
-        settings.input_latest_changes_action_file.write_text(new_content)
-        logging.info(f"Committing changes to: {settings.input_latest_changes_action_file}")
-        subprocess.run(["git", "add", str(settings.input_latest_changes_action_file)], check=True)
+        settings.input_latest_changes_file.write_text(new_content)
+        logging.info(f"Committing changes to: {settings.input_latest_changes_file}")
+        subprocess.run(["git", "add", str(settings.input_latest_changes_file)], check=True)
         subprocess.run(["git", "commit", "-m", "📝 Update release notes"], check=True)
-        logging.info(f"Pushing changes: {settings.input_latest_changes_action_file}")
+        logging.info(f"Pushing changes: {settings.input_latest_changes_file}")
         subprocess.run(["git", "push"], check=True)
         break
     logging.info("Finished")
