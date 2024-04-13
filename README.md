@@ -4,7 +4,7 @@ Automatically add the changes from each PR to the release notes in a file.
 
 ## How to use
 
-Install this GitHub action by creating a file in your repo at `.github/workflows/latest-changes-action.yml`.
+Install this GitHub action by creating a file in your repo at `.github/workflows/latest-changes.yml`.
 
 A minimal example could be:
 
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: docker://khulnasoft/latest-changes-action:0.3.0
+      - uses: docker://khulnasoft/latest-changes:0.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -39,9 +39,9 @@ jobs:
 **Note**: you can also use the GitHub action directly instead of with Docker, but that would take an extra minute:
 
 ```YAML
-      # - uses: docker://khulnasoft/latest-changes-action:0.3.0
+      # - uses: docker://khulnasoft/latest-changes:0.3.0
       # This is slower but also works
-      - uses: khulnasoft/latest-changes-action@0.3.0
+      - uses: khulnasoft/latest-changes@0.3.0
 ```
 
 In this minimal example, it uses all the default configurations.
@@ -65,7 +65,7 @@ It will look something like:
 
 > ### Latest Changes Action
 >
-> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
+> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
 
 You can see an example of how it works in this same file, at the bottom, in [Latest Changes Action- Latest Changes Action🤷](##latest-changes---latest-changes-).
 
@@ -95,7 +95,7 @@ So, if you have a PR with a label `feature`, by default, it will show up in the 
 >
 > #### Features
 >
-> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
+> * ✨ Add support for Jinja2 templates for Latest Changes Action messages. PR [#23](https://github.com/khulnasoft/latest-changes/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
 
 You can configure the labels and headers used in the GitHub Action `labels` workflow configuration, and you can configure the header prefix, by default `#### `.
 
@@ -119,10 +119,10 @@ So, in those cases, it won't do everything automatically, you will have to manua
 
 You can configure:
 
-* `latest_changes_action_file`: The file to modify with the latest changes Action. For example: `./docs/latest-changes-action.rst`.
-* `latest_changes_action_header`: The header to look for before adding a new message. for example: `# CHANGELOG`.
+* `latest_changes_file`: The file to modify with the latest changes Action. For example: `./docs/latest-changes.rst`.
+* `latest_changes_header`: The header to look for before adding a new message. for example: `# CHANGELOG`.
 * `template_file`: A custom Jinja2 template file to use to generate the message, you could use this to generate a different message or to use a different format, for example, HTML instead of the default Markdown.
-* `end_regex`: A RegEx string that marks the end of this release, so it normally matches the start of the header of the next release section, normally the same header level as `latest_changes_action_header`, so, if the `latest_changes_action_header` is `### Latest Changes Action`, the content for the next release below is probably something like `### 0.2.0`, then the `end_regex` should be `^### `. This is used to limit the content updated as this will read the existing sub sections and possibly update them using the labels configuration and the labels in the PR. By default it is `(^### .*)|(^## .*)` to detect a possible next header, e.g. for the license.
+* `end_regex`: A RegEx string that marks the end of this release, so it normally matches the start of the header of the next release section, normally the same header level as `latest_changes_header`, so, if the `latest_changes_header` is `### Latest Changes Action`, the content for the next release below is probably something like `### 0.2.0`, then the `end_regex` should be `^### `. This is used to limit the content updated as this will read the existing sub sections and possibly update them using the labels configuration and the labels in the PR. By default it is `(^### .*)|(^## .*)` to detect a possible next header, e.g. for the license.
 * `debug_logs`: Set to `'true'` to show logs with the current settings.
 * `labels`: A JSON array of JSON objects with a `label` that you would put in each PR and the `header` that would be used in the release notes. See the example below.
 * `label_header_prefix`: A prefix to put before each label's header. This is also used to detect where the next label header starts. By default it is `#### `, so the headers will look like `#### Features`.
@@ -173,11 +173,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: khulnasoft/latest-changes-action@0.3.0
+    - uses: khulnasoft/latest-changes@0.3.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        latest_changes_action_file: docs/release-notes.md
-        latest_changes_action_header: '# Release Notes'
+        latest_changes_file: docs/release-notes.md
+        latest_changes_header: '# Release Notes'
         template_file: ./.github/workflows/release-notes.jinja2
         # The next release will start with this RegEx, for example "## 0.2.0"
         end_regex: '^## '
@@ -209,13 +209,13 @@ In this custom config:
 * It uses the GitHub action directly:
 
 ```
-khulnasoft/latest-changes-action@0.3.0
+khulnasoft/latest-changes@0.3.0
 ```
 
 instead of with Docker:
 
 ```
-docker://khulnasoft/latest-changes-action:0.3.0
+docker://khulnasoft/latest-changes:0.3.0
 ```
 
 **Note**: that would make every run about 1 min slower, but you can do that if you prefer it 🤷.
@@ -227,21 +227,21 @@ docker://khulnasoft/latest-changes-action:0.3.0
 # Release Notes
 ```
 
-**Note**: The `latest_changes_action_header` is a [regular expression](https://regex101.com/).
+**Note**: The `latest_changes_header` is a [regular expression](https://regex101.com/).
 
 So it will generate messages like:
 
 ```Markdown
 # Release Notes
 
-* This changed: ✨ Add support for Jinja2 templates for changes notes. Done by [the GitHub user khulnasoft](https://github.com/khulnasoft). Check the [Pull Request 23 with the changes and stuff](https://github.com/khulnasoft/latest-changes-action/pull/23). now back to code. 🤓
+* This changed: ✨ Add support for Jinja2 templates for changes notes. Done by [the GitHub user khulnasoft](https://github.com/khulnasoft). Check the [Pull Request 23 with the changes and stuff](https://github.com/khulnasoft/latest-changes/pull/23). now back to code. 🤓
 ```
 
 And that Markdown will be shown like:
 
 > # Release Notes
 >
-> * This changed: ✨ Add support for Jinja2 templates for changes notes. Done by [the GitHub user khulnasoft](https://github.com/khulnasoft). Check the [Pull Request 23 with the changes and stuff](https://github.com/khulnasoft/latest-changes-action/pull/23). now back to code. 🤓
+> * This changed: ✨ Add support for Jinja2 templates for changes notes. Done by [the GitHub user khulnasoft](https://github.com/khulnasoft). Check the [Pull Request 23 with the changes and stuff](https://github.com/khulnasoft/latest-changes/pull/23). now back to code. 🤓
 
 * It will expect that the end of the content starts with the regular expression `^## `, normally because that's how the next release starts. This will be used to organize the content in the sections with the headers from the `labels` configuration.
 
@@ -298,7 +298,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTIONS_TOKEN }}
-      - uses: docker://khulnasoft/latest-changes-action:0.3.0
+      - uses: docker://khulnasoft/latest-changes:0.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -322,98 +322,98 @@ So, the commits will still be shown as made by `github-actions`.
 
 ### Latest Changes Action- Latest Changes Action🤷
 
-* init commit. PR [#6](https://github.com/khulnasoft/latest-changes-action/pull/6) by [@gitworkflows](https://github.com/gitworkflows).
-* ⬆ Update httpx requirement from <0.26.0,>=0.15.5 to >=0.15.5,<0.28.0. PR [#5](https://github.com/khulnasoft/latest-changes-action/pull/5) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* init commit. PR [#6](https://github.com/khulnasoft/latest-changes/pull/6) by [@gitworkflows](https://github.com/gitworkflows).
+* ⬆ Update httpx requirement from <0.26.0,>=0.15.5 to >=0.15.5,<0.28.0. PR [#5](https://github.com/khulnasoft/latest-changes/pull/5) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ### 0.3.0
 
 #### Features
 
-* ✨ Add retries to handle race conditions. PR [#63](https://github.com/khulnasoft/latest-changes-action/pull/63) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Add retries to handle race conditions. PR [#63](https://github.com/khulnasoft/latest-changes/pull/63) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.2.1
 
 #### Fixes
 
-* 🐛 Detect if there's a second level header after the release content, to support the first change in a README with a last section for a license. PR [#59](https://github.com/khulnasoft/latest-changes-action/pull/59) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Detect if there's a second level header after the release content, to support the first change in a README with a last section for a license. PR [#59](https://github.com/khulnasoft/latest-changes/pull/59) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.2.0
 
 #### Refactors
 
-* ♻️ Separate label header prefix from label text with `label_header_prefix`, this allows re-using the default labels while only changing the header level. PR [#58](https://github.com/khulnasoft/latest-changes-action/pull/58) by [@khulnasoft](https://github.com/khulnasoft).
+* ♻️ Separate label header prefix from label text with `label_header_prefix`, this allows re-using the default labels while only changing the header level. PR [#58](https://github.com/khulnasoft/latest-changes/pull/58) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.1.1
 
 #### Fixes
 
-* 🐛 Fix handling multiple section headers. PR [#57](https://github.com/khulnasoft/latest-changes-action/pull/57) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Fix handling multiple section headers. PR [#57](https://github.com/khulnasoft/latest-changes/pull/57) by [@khulnasoft](https://github.com/khulnasoft).
 
 #### Upgrades
 
-* ⬆ Update httpx requirement from <0.16.0,>=0.15.5 to >=0.15.5,<0.26.0. PR [#54](https://github.com/khulnasoft/latest-changes-action/pull/54) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Update httpx requirement from <0.16.0,>=0.15.5 to >=0.15.5,<0.26.0. PR [#54](https://github.com/khulnasoft/latest-changes/pull/54) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 #### Docs
 
-* ✏️ Fix typo in syntax for using the GitHub Action tag directly (instead of with Docker) in README. PR [#39](https://github.com/khulnasoft/latest-changes-action/pull/39) by [@art049](https://github.com/art049).
+* ✏️ Fix typo in syntax for using the GitHub Action tag directly (instead of with Docker) in README. PR [#39](https://github.com/khulnasoft/latest-changes/pull/39) by [@art049](https://github.com/art049).
 
 #### Internal
 
-* ⬆ Bump docker/setup-buildx-action from 1 to 3. PR [#53](https://github.com/khulnasoft/latest-changes-action/pull/53) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ⬆ Bump docker/build-push-action from 2 to 5. PR [#52](https://github.com/khulnasoft/latest-changes-action/pull/52) by [@dependabot[bot]](https://github.com/apps/dependabot).
-* ⬆ Bump docker/login-action from 1 to 3. PR [#51](https://github.com/khulnasoft/latest-changes-action/pull/51) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump docker/setup-buildx-action from 1 to 3. PR [#53](https://github.com/khulnasoft/latest-changes/pull/53) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump docker/build-push-action from 2 to 5. PR [#52](https://github.com/khulnasoft/latest-changes/pull/52) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump docker/login-action from 1 to 3. PR [#51](https://github.com/khulnasoft/latest-changes/pull/51) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ### 0.1.0
 
 #### Features
 
-* ♻️ Use Docker slim to reduce the time to run in half, from 33s to 16s. PR [#55](https://github.com/khulnasoft/latest-changes-action/pull/55) by [@khulnasoft](https://github.com/khulnasoft).
-* ✨ Add support for labels and section headers (features, fixes, etc.). PR [#48](https://github.com/khulnasoft/latest-changes-action/pull/48) by [@khulnasoft](https://github.com/khulnasoft).
-* 🚀 Publish amd64 and arm64 versions, and publish to GitHub Container Registry, fix git in containers. PR [#46](https://github.com/khulnasoft/latest-changes-action/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
+* ♻️ Use Docker slim to reduce the time to run in half, from 33s to 16s. PR [#55](https://github.com/khulnasoft/latest-changes/pull/55) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Add support for labels and section headers (features, fixes, etc.). PR [#48](https://github.com/khulnasoft/latest-changes/pull/48) by [@khulnasoft](https://github.com/khulnasoft).
+* 🚀 Publish amd64 and arm64 versions, and publish to GitHub Container Registry, fix git in containers. PR [#46](https://github.com/khulnasoft/latest-changes/pull/46) by [@khulnasoft](https://github.com/khulnasoft).
 
 #### Upgrades
 
-* ⬆️ Upgrade GitHub Action checkout and references to it. PR [#49](https://github.com/khulnasoft/latest-changes-action/pull/49) by [@khulnasoft](https://github.com/khulnasoft).
+* ⬆️ Upgrade GitHub Action checkout and references to it. PR [#49](https://github.com/khulnasoft/latest-changes/pull/49) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### Docs
 
-* 📝 Add docs for using latest-changes-action with protected branches. PR [#43](https://github.com/khulnasoft/latest-changes-action/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
+* 📝 Add docs for using latest-changes with protected branches. PR [#43](https://github.com/khulnasoft/latest-changes/pull/43) by [@khulnasoft](https://github.com/khulnasoft).
 
 #### Internal
 
-* 👷 Do not push the slim branch for debugging. PR [#56](https://github.com/khulnasoft/latest-changes-action/pull/56) by [@khulnasoft](https://github.com/khulnasoft).
-* 👷 Update CI, Dependabot, funding. PR [#50](https://github.com/khulnasoft/latest-changes-action/pull/50) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔥 Remove config pushing to custom branch for debugging. PR [#47](https://github.com/khulnasoft/latest-changes-action/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
+* 👷 Do not push the slim branch for debugging. PR [#56](https://github.com/khulnasoft/latest-changes/pull/56) by [@khulnasoft](https://github.com/khulnasoft).
+* 👷 Update CI, Dependabot, funding. PR [#50](https://github.com/khulnasoft/latest-changes/pull/50) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔥 Remove config pushing to custom branch for debugging. PR [#47](https://github.com/khulnasoft/latest-changes/pull/47) by [@khulnasoft](https://github.com/khulnasoft).
 
 #### Internal
 
-* 👷 Update CI, Dependabot, funding. PR [#50](https://github.com/khulnasoft/latest-changes-action/pull/50) by [@khulnasoft](https://github.com/khulnasoft).
+* 👷 Update CI, Dependabot, funding. PR [#50](https://github.com/khulnasoft/latest-changes/pull/50) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.0.3
 
-* 🚚 Update Python module name to latest_changes_action to avoid conflicts with any repo directory "app". PR [#37](https://github.com/khulnasoft/latest-changes-action/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
-* 🐛 Fix default Jinja2 path in Action yaml. PR [#38](https://github.com/khulnasoft/latest-changes-action/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
+* 🚚 Update Python module name to latest_changes to avoid conflicts with any repo directory "app". PR [#37](https://github.com/khulnasoft/latest-changes/pull/37) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Fix default Jinja2 path in Action yaml. PR [#38](https://github.com/khulnasoft/latest-changes/pull/38) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.0.2
 
-* ✨ Check if the Latest Changes Action message was already added before adding it. PR [#35](https://github.com/khulnasoft/latest-changes-action/pull/35) by [@khulnasoft](https://github.com/khulnasoft).
-* 📝 Add docs for running manually, with a workflow dispatch. PR [#34](https://github.com/khulnasoft/latest-changes-action/pull/34) by [@khulnasoft](https://github.com/khulnasoft).
-* ✨ Refactor and add support for triggering with workflow dispatch events. PR [#32](https://github.com/khulnasoft/latest-changes-action/pull/32) by [@khulnasoft](https://github.com/khulnasoft).
-* 🐛 Fix basic example in README, include checkout step. PR [#31](https://github.com/khulnasoft/latest-changes-action/pull/31) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Check if the Latest Changes Action message was already added before adding it. PR [#35](https://github.com/khulnasoft/latest-changes/pull/35) by [@khulnasoft](https://github.com/khulnasoft).
+* 📝 Add docs for running manually, with a workflow dispatch. PR [#34](https://github.com/khulnasoft/latest-changes/pull/34) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Refactor and add support for triggering with workflow dispatch events. PR [#32](https://github.com/khulnasoft/latest-changes/pull/32) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Fix basic example in README, include checkout step. PR [#31](https://github.com/khulnasoft/latest-changes/pull/31) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### 0.0.1
 
-* 📝 Add note about updating the PR title. PR [#30](https://github.com/khulnasoft/latest-changes-action/pull/30) by [@khulnasoft](https://github.com/khulnasoft).
-* 🐛 Fix internal latest changes, use a custom header so it doesn't break the examples. PR [#29](https://github.com/khulnasoft/latest-changes-action/pull/29) by [@khulnasoft](https://github.com/khulnasoft).
-* 🐛 Fix default action config for template file. PR [#28](https://github.com/khulnasoft/latest-changes-action/pull/28) by [@khulnasoft](https://github.com/khulnasoft).
-* ✨ Add support for Jinja2 templates for changes notes. PR [#23](https://github.com/khulnasoft/latest-changes-action/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔥 Remove unnecessary note from release notes. PR [#22](https://github.com/khulnasoft/latest-changes-action/pull/22) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔥 Remove unnecessary note from latest changes. PR [#21](https://github.com/khulnasoft/latest-changes-action/pull/21) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔧 Update tmate config keys. PR [#20](https://github.com/khulnasoft/latest-changes-action/pull/20) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔒 Update tmate config for keys. PR [#19](https://github.com/khulnasoft/latest-changes-action/pull/19) by [@khulnasoft](https://github.com/khulnasoft).
-* ✏️ Fix incorrect URL. PR [#18](https://github.com/khulnasoft/latest-changes-action/pull/18) by [@khulnasoft](https://github.com/khulnasoft).
-* 🔒 Try to secure tmate. PR [#17](https://github.com/khulnasoft/latest-changes-action/pull/17) by [@khulnasoft](https://github.com/khulnasoft).
-* 📝 Update release notes URLs. PR [#16](https://github.com/khulnasoft/latest-changes-action/pull/16) by [@khulnasoft](https://github.com/khulnasoft).
+* 📝 Add note about updating the PR title. PR [#30](https://github.com/khulnasoft/latest-changes/pull/30) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Fix internal latest changes, use a custom header so it doesn't break the examples. PR [#29](https://github.com/khulnasoft/latest-changes/pull/29) by [@khulnasoft](https://github.com/khulnasoft).
+* 🐛 Fix default action config for template file. PR [#28](https://github.com/khulnasoft/latest-changes/pull/28) by [@khulnasoft](https://github.com/khulnasoft).
+* ✨ Add support for Jinja2 templates for changes notes. PR [#23](https://github.com/khulnasoft/latest-changes/pull/23) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔥 Remove unnecessary note from release notes. PR [#22](https://github.com/khulnasoft/latest-changes/pull/22) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔥 Remove unnecessary note from latest changes. PR [#21](https://github.com/khulnasoft/latest-changes/pull/21) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔧 Update tmate config keys. PR [#20](https://github.com/khulnasoft/latest-changes/pull/20) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔒 Update tmate config for keys. PR [#19](https://github.com/khulnasoft/latest-changes/pull/19) by [@khulnasoft](https://github.com/khulnasoft).
+* ✏️ Fix incorrect URL. PR [#18](https://github.com/khulnasoft/latest-changes/pull/18) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔒 Try to secure tmate. PR [#17](https://github.com/khulnasoft/latest-changes/pull/17) by [@khulnasoft](https://github.com/khulnasoft).
+* 📝 Update release notes URLs. PR [#16](https://github.com/khulnasoft/latest-changes/pull/16) by [@khulnasoft](https://github.com/khulnasoft).
 
 ## License
 
